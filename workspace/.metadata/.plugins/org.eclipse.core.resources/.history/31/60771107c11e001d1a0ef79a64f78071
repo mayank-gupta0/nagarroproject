@@ -1,0 +1,77 @@
+package com.project1.controller;
+
+import java.util.List;
+import java.util.Map;
+
+import javax.validation.Valid;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.project1.entity.ProductEntity;
+import com.project1.response.AllProductList;
+import com.project1.response.UserResponse;
+import com.project1.service.UserService;
+
+@RestController
+@CrossOrigin
+@RequestMapping("/user")
+public class UserController {
+
+	@Autowired
+	UserService userService;
+
+	@PostMapping("/register")
+	public String register(@Valid @RequestBody UserResponse request) {
+		return userService.register(request);
+
+	}
+
+	@GetMapping("/login")
+	public ResponseEntity<String> login(@RequestParam String email, @RequestParam String password) {
+		String str = userService.login(email, password);
+		if (str.equals("")) {
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+
+		} else {
+			return new ResponseEntity<>(str, HttpStatus.OK);
+
+		}
+
+	}
+
+	@GetMapping("/productinfo") // by this user getting product name and description of that product which has
+								// put the name of product
+	public ResponseEntity<List<ProductEntity>> info(@RequestParam String productname) {
+		List<ProductEntity> prod = userService.productinfo(productname);
+		if (prod.isEmpty()) {
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+
+		} else {
+			return new ResponseEntity<>(prod, HttpStatus.OK);
+		}
+
+	}
+
+	@GetMapping("/allproduct")
+	public List<AllProductList> allproduct() {
+		return userService.allproduct();
+	}
+
+	@GetMapping("/similarname")
+	public List<AllProductList> findProducts(@RequestParam String name) {
+		return userService.findBySimilarName(name);
+
+	}
+
+}
+
+// for get code=200,post=201,put=200

@@ -1,0 +1,116 @@
+package com.project1.response;
+
+import javax.persistence.Column;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
+import com.project1.entity.Pincode;
+
+public class ProductResponse {
+
+	@NotNull(message = "Field can not be empty")
+	private String productName;
+
+	@Size(min = 20, message = "minimum 20 words required")
+	private String productDescription;
+
+	@NotNull(message = "Field can not be empty")
+	private long productPrice;
+
+	@NotNull(message = "Field can not be empty")
+	private String productBrand;
+
+	@NotNull(message = "Field can not be empty")
+	private int productCode;
+
+	@NotNull(message = "Field can not be empty")
+	private String productLocation;
+
+	private PincodeResponse code;
+
+	public String getProductName() {
+		return productName;
+	}
+
+	public void setProductName(String productName) {
+		this.productName = productName;
+	}
+
+	public String getProductDescription() {
+		return productDescription;
+	}
+
+	public void setProductDescription(String productDescription) {
+		this.productDescription = productDescription;
+	}
+
+	public long getProductPrice() {
+		return productPrice;
+	}
+
+	public void setProductPrice(long productPrice) {
+		this.productPrice = productPrice;
+	}
+
+	public String getProductBrand() {
+		return productBrand;
+	}
+
+	public void setProductBrand(String productBrand) {
+		this.productBrand = productBrand;
+	}
+
+	public int getProductCode() {
+		return productCode;
+	}
+
+	public void setProductCode(int productCode) {
+		this.productCode = productCode;
+	}
+
+	public String getProductLocation() {
+		return productLocation;
+	}
+
+	public void setProductLocation(String productLocation) {
+		this.productLocation = productLocation;
+	}
+
+	public PincodeResponse getCode() {
+		return code;
+	}
+
+	public void setCode(PincodeResponse code) {
+		this.code = code;
+	}
+
+	public ProductResponse(@NotNull(message = "Field can not be empty") String productName,
+			@Size(min = 20, message = "minimum 20 words required") String productDescription,
+			@NotNull(message = "Field can not be empty") long productPrice,
+			@NotNull(message = "Field can not be empty") String productBrand,
+			@NotNull(message = "Field can not be empty") int productCode,
+			@NotNull(message = "Field can not be empty") String productLocation, PincodeResponse code) {
+		super();
+		this.productName = productName;
+		this.productDescription = productDescription;
+		this.productPrice = productPrice;
+		this.productBrand = productBrand;
+		this.productCode = productCode;
+		this.productLocation = productLocation;
+		this.code = code;
+	}
+
+	public ProductResponse() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	@Override
+	public String toString() {
+		return "ProductResponse [productName=" + productName + ", productDescription=" + productDescription
+				+ ", productPrice=" + productPrice + ", productBrand=" + productBrand + ", productCode=" + productCode
+				+ ", productLocation=" + productLocation + ", code=" + code + "]";
+	}
+
+}

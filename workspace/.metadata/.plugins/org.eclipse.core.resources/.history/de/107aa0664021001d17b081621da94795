@@ -1,0 +1,18 @@
+package com.project1.entity;
+
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Id
+@GeneratedValue(strategy = GenerationType.IDENTITY)
+public class Pincode {
+	private int code1;
+	private int code2;
+	private int code3;
+	private int code4;
+	private int code5;
+	
+	
+
+}

@@ -1,0 +1,12 @@
+package com.project1.entity;
+
+public class Pincode {
+	private int code1;
+	private int code2;
+	private int code3;
+	private int code4;
+	private int code5;
+	
+	
+
+}

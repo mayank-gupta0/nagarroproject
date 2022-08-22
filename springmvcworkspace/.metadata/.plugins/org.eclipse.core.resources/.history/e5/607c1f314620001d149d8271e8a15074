@@ -1,0 +1,11 @@
+<html>
+<body>
+ <table align="center">
+		<tr>
+			<td><a href="login2">Login</a></td>
+			 <td><a href="register">Register</a></td>
+		</tr>
+	</table>
+</body>
+</html>
+

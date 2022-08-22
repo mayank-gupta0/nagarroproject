@@ -1,0 +1,5 @@
+package com.wdf.springmvc.model;
+
+public class login {
+
+}
